@@ -1,6 +1,9 @@
 {
   "name": "@f0c1s/security-strings",
-  "version": "1.0.0",
+  "bin": {
+    "secstr": "./src/strings.js"
+  },
+  "version": "2021.1.1",
   "description": "Run an input string through a bunch of operations like rot, base64, hash etc.",
   "main": "src/strings.js",
   "dependencies": {
@@ -10,7 +13,8 @@
     "@f0c1s/color-yellow": "0.0.1",
     "@f0c1s/escape-html": "^2018.11.16",
     "@f0c1s/escape-javascript": "^2018.11.14",
-    "@f0c1s/security-rot": "^2021.1.3"
+    "@f0c1s/security-rot": "^2021.1.3",
+    "@m1yh3m/base.64.codec.node.lib": "^2021.1.2"
   },
   "devDependencies": {},
   "scripts": {
