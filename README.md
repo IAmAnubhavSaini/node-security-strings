@@ -2,11 +2,11 @@
 
 - [github: node-security-strings](https://github.com/IAmAnubhavSaini/node-security-strings)
 - [NPM: @f0c1s/security-strings](https://www.npmjs.com/package/@f0c1s/security-strings)
-- Command: `secstr`
+- Command: `secstr <input> [--table | --rot13s]`
 
 `secstr` command line utility.
 
-Use v2025
+Use v2026.
 
 ## Installation and Usage
 
@@ -15,88 +15,143 @@ Use v2025
 
 ```bash
 
-secstr "what? is gmail@gmail.com"
+secstr one@example.com
 
-for input: what? is gmail@gmail.com
-what? is gmail@gmail.com rot47 H92Enp:Dp8>2:=o8>2:=]4@>
-what? is gmail@gmail.com base64.encode d2hhdD8gaXMgZ21haWxAZ21haWwuY29t
-what? is gmail@gmail.com base64.decode ...[This breaks readme.md]...
-what? is gmail@gmail.com escapeJS what\x3f is gmail\x40gmail.com
-what? is gmail@gmail.com escapeHTML what&#x3f; is gmail&#x40;gmail.com
-rot13 rotations on: what? is gmail@gmail.com
-{ i: 1, rot: 'xibu? jt hnbjm@hnbjm.dpn' }
-{ i: 2, rot: 'yjcv? ku iockn@iockn.eqo' }
-{ i: 3, rot: 'zkdw? lv jpdlo@jpdlo.frp' }
-{ i: 4, rot: 'alex? mw kqemp@kqemp.gsq' }
-{ i: 5, rot: 'bmfy? nx lrfnq@lrfnq.htr' }
-{ i: 6, rot: 'cngz? oy msgor@msgor.ius' }
-{ i: 7, rot: 'doha? pz nthps@nthps.jvt' }
-{ i: 8, rot: 'epib? qa ouiqt@ouiqt.kwu' }
-{ i: 9, rot: 'fqjc? rb pvjru@pvjru.lxv' }
-{ i: 10, rot: 'grkd? sc qwksv@qwksv.myw' }
-{ i: 11, rot: 'hsle? td rxltw@rxltw.nzx' }
-{ i: 12, rot: 'itmf? ue symux@symux.oay' }
-{ i: 13, rot: 'jung? vf tznvy@tznvy.pbz' }
-{ i: 14, rot: 'kvoh? wg uaowz@uaowz.qca' }
-{ i: 15, rot: 'lwpi? xh vbpxa@vbpxa.rdb' }
-{ i: 16, rot: 'mxqj? yi wcqyb@wcqyb.sec' }
-{ i: 17, rot: 'nyrk? zj xdrzc@xdrzc.tfd' }
-{ i: 18, rot: 'ozsl? ak yesad@yesad.uge' }
-{ i: 19, rot: 'patm? bl zftbe@zftbe.vhf' }
-{ i: 20, rot: 'qbun? cm agucf@agucf.wig' }
-{ i: 21, rot: 'rcvo? dn bhvdg@bhvdg.xjh' }
-{ i: 22, rot: 'sdwp? eo ciweh@ciweh.yki' }
-{ i: 23, rot: 'texq? fp djxfi@djxfi.zlj' }
-{ i: 24, rot: 'ufyr? gq ekygj@ekygj.amk' }
-{ i: 25, rot: 'vgzs? hr flzhk@flzhk.bnl' }
-{ i: 26, rot: 'what? is gmail@gmail.com' }
+# secstr "one@example.com"
+# 
+# rot13                bar@rknzcyr.pbz
+# rot47                @?6o6I2>A=6]4@>
+# base64.encode        b25lQGV4YW1wbGUuY29t
+# base64.decode        ...[This breaks readme.md]...
+# escapeJS             one\x40example.com
+# escapeHTML           one&#x40;example.com
+# END
+
+```
+
+### Table
+
+```bash
+
+secstr one@example.com --table 
+
+# secstr "one@example.com"
+# 
+# ┌─────────┬─────────────────┬────────────────────────┐
+# │ (index) │       fn        │       fn(input)        │
+# ├─────────┼─────────────────┼────────────────────────┤
+# │    0    │     'rot13'     │   'bar@rknzcyr.pbz'    │
+# │    1    │     'rot47'     │   '@?6o6I2>A=6]4@>'    │
+# │    2    │ 'base64.encode' │ 'b25lQGV4YW1wbGUuY29t' │
+# │    3    │ 'base64.decode' │ '¢w\x02±jje\x1Er\x89'  │
+# │    4    │   'escapeJS'    │ 'one\\x40example.com'  │
+# │    5    │  'escapeHTML'   │ 'one&#x40;example.com' │
+# └─────────┴─────────────────┴────────────────────────┘
+# END
+
+```
+
+### All of the rot13s
+
+```bash
+
+secstr one@example.com --rot13s
+
+# secstr "one@example.com"
+# 
+# rot13                bar@rknzcyr.pbz
+# rot47                @?6o6I2>A=6]4@>
+# base64.encode        b25lQGV4YW1wbGUuY29t
+# base64.decode        ...[This breaks readme.md]..
+# escapeJS             one\x40example.com
+# escapeHTML           one&#x40;example.com
+# { i: 1, rot: 'pof@fybnqmf.dpn' }
+# { i: 2, rot: 'qpg@gzcorng.eqo' }
+# { i: 3, rot: 'rqh@hadpsoh.frp' }
+# { i: 4, rot: 'sri@ibeqtpi.gsq' }
+# { i: 5, rot: 'tsj@jcfruqj.htr' }
+# { i: 6, rot: 'utk@kdgsvrk.ius' }
+# { i: 7, rot: 'vul@lehtwsl.jvt' }
+# { i: 8, rot: 'wvm@mfiuxtm.kwu' }
+# { i: 9, rot: 'xwn@ngjvyun.lxv' }
+# { i: 10, rot: 'yxo@ohkwzvo.myw' }
+# { i: 11, rot: 'zyp@pilxawp.nzx' }
+# { i: 12, rot: 'azq@qjmybxq.oay' }
+# { i: 13, rot: 'bar@rknzcyr.pbz' }
+# { i: 14, rot: 'cbs@sloadzs.qca' }
+# { i: 15, rot: 'dct@tmpbeat.rdb' }
+# { i: 16, rot: 'edu@unqcfbu.sec' }
+# { i: 17, rot: 'fev@vordgcv.tfd' }
+# { i: 18, rot: 'gfw@wpsehdw.uge' }
+# { i: 19, rot: 'hgx@xqtfiex.vhf' }
+# { i: 20, rot: 'ihy@yrugjfy.wig' }
+# { i: 21, rot: 'jiz@zsvhkgz.xjh' }
+# { i: 22, rot: 'kja@atwilha.yki' }
+# { i: 23, rot: 'lkb@buxjmib.zlj' }
+# { i: 24, rot: 'mlc@cvyknjc.amk' }
+# { i: 25, rot: 'nmd@dwzlokd.bnl' }
+# { i: 26, rot: 'one@example.com' }
+# END
+
+```
+
+### Everything is a table...
+
+```bash
+
+secstr one@example.com --rot13s --table
+
+# secstr "one@example.com"
+# 
+# ┌─────────┬─────────────────┬────────────────────────┐
+# │ (index) │       fn        │       fn(input)        │
+# ├─────────┼─────────────────┼────────────────────────┤
+# │    0    │     'rot13'     │   'bar@rknzcyr.pbz'    │
+# │    1    │     'rot47'     │   '@?6o6I2>A=6]4@>'    │
+# │    2    │ 'base64.encode' │ 'b25lQGV4YW1wbGUuY29t' │
+# │    3    │ 'base64.decode' │ '¢w\x02±jje\x1Er\x89'  │
+# │    4    │   'escapeJS'    │ 'one\\x40example.com'  │
+# │    5    │  'escapeHTML'   │ 'one&#x40;example.com' │
+# └─────────┴─────────────────┴────────────────────────┘
+# ┌─────────┬────┬───────────────────┐
+# │ (index) │ i  │        rot        │
+# ├─────────┼────┼───────────────────┤
+# │    0    │ 1  │ 'pof@fybnqmf.dpn' │
+# │    1    │ 2  │ 'qpg@gzcorng.eqo' │
+# │    2    │ 3  │ 'rqh@hadpsoh.frp' │
+# │    3    │ 4  │ 'sri@ibeqtpi.gsq' │
+# │    4    │ 5  │ 'tsj@jcfruqj.htr' │
+# │    5    │ 6  │ 'utk@kdgsvrk.ius' │
+# │    6    │ 7  │ 'vul@lehtwsl.jvt' │
+# │    7    │ 8  │ 'wvm@mfiuxtm.kwu' │
+# │    8    │ 9  │ 'xwn@ngjvyun.lxv' │
+# │    9    │ 10 │ 'yxo@ohkwzvo.myw' │
+# │   10    │ 11 │ 'zyp@pilxawp.nzx' │
+# │   11    │ 12 │ 'azq@qjmybxq.oay' │
+# │   12    │ 13 │ 'bar@rknzcyr.pbz' │
+# │   13    │ 14 │ 'cbs@sloadzs.qca' │
+# │   14    │ 15 │ 'dct@tmpbeat.rdb' │
+# │   15    │ 16 │ 'edu@unqcfbu.sec' │
+# │   16    │ 17 │ 'fev@vordgcv.tfd' │
+# │   17    │ 18 │ 'gfw@wpsehdw.uge' │
+# │   18    │ 19 │ 'hgx@xqtfiex.vhf' │
+# │   19    │ 20 │ 'ihy@yrugjfy.wig' │
+# │   20    │ 21 │ 'jiz@zsvhkgz.xjh' │
+# │   21    │ 22 │ 'kja@atwilha.yki' │
+# │   22    │ 23 │ 'lkb@buxjmib.zlj' │
+# │   23    │ 24 │ 'mlc@cvyknjc.amk' │
+# │   24    │ 25 │ 'nmd@dwzlokd.bnl' │
+# │   25    │ 26 │ 'one@example.com' │
+# └─────────┴────┴───────────────────┘
+# END
+
 
 ```
 
 - OR as `npx` command
 
 ```bash
-
 npx @f0c1s/security-strings "what?"
-
-Need to install the following packages:
-  @f0c1s/security-strings
-Ok to proceed? (y) y
-for input: what?
-what? rot47 H92En
-what? base64.encode d2hhdD8=
-what? base64.decode ...[This breaks readme.md]...
-what? escapeJS what\x3f
-what? escapeHTML what&#x3f;
-rot13 rotations on: what?
-{ i: 1, rot: 'xibu?' }
-{ i: 2, rot: 'yjcv?' }
-{ i: 3, rot: 'zkdw?' }
-{ i: 4, rot: 'alex?' }
-{ i: 5, rot: 'bmfy?' }
-{ i: 6, rot: 'cngz?' }
-{ i: 7, rot: 'doha?' }
-{ i: 8, rot: 'epib?' }
-{ i: 9, rot: 'fqjc?' }
-{ i: 10, rot: 'grkd?' }
-{ i: 11, rot: 'hsle?' }
-{ i: 12, rot: 'itmf?' }
-{ i: 13, rot: 'jung?' }
-{ i: 14, rot: 'kvoh?' }
-{ i: 15, rot: 'lwpi?' }
-{ i: 16, rot: 'mxqj?' }
-{ i: 17, rot: 'nyrk?' }
-{ i: 18, rot: 'ozsl?' }
-{ i: 19, rot: 'patm?' }
-{ i: 20, rot: 'qbun?' }
-{ i: 21, rot: 'rcvo?' }
-{ i: 22, rot: 'sdwp?' }
-{ i: 23, rot: 'texq?' }
-{ i: 24, rot: 'ufyr?' }
-{ i: 25, rot: 'vgzs?' }
-{ i: 26, rot: 'what?' }
-
-
 ```
 
 ## License
@@ -107,4 +162,6 @@ MIT
 
 `npm i -g typescript` because `npm i -D typescript` consumes 60MB.
 
-`npm run build`
+`npm run build` - for building .ts files
+
+`npm run build && npm link && secstr` for quickly checking out the default.
