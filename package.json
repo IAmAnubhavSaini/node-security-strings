@@ -3,7 +3,7 @@
   "bin": {
     "secstr": "./src/strings.js"
   },
-  "version": "2025.0.0",
+  "version": "2025.1.0",
   "description": "`secstr` command line utility. Run an input string through a bunch of operations like rot, base64, hash etc.",
   "main": "src/strings.js",
   "dependencies": {
